@@ -49,8 +49,8 @@ class NewPost(Handler):
         if title and body:
             p = Post(title = title, body = body)
             p.put()
-
-            self.redirect("/")
+            self.redirect("/post/%s" % str(p.key().id()))
+        
         else:
             error = "Both fields are both required."
             self.render_entry(title, body, error)
